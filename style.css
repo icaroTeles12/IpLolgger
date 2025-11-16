@@ -1,0 +1,300 @@
+/* Variáveis para fácil personalização */
+:root {
+    --primary-color: #00ff00; /* Verde neon */
+    --secondary-color: #00ffff; /* Ciano neon */
+    --text-color: #00ff00; /* Texto verde neon */
+    --background-color: #0d1117; /* Fundo muito escuro (quase preto) */
+    --card-background: #161b22; /* Fundo um pouco mais claro para caixas */
+    --shadow-light: 0 0 15px rgba(0, 255, 0, 0.4); /* Sombra neon verde */
+    --danger-color: #ff0000; /* Vermelho forte para erros */
+    --border-radius: 4px; /* Bordas mais afiadas */
+    --terminal-font: 'Cascadia Code PL', 'Fira Code', 'Hack', monospace;
+}
+
+body {
+    font-family: var(--terminal-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 20px;
+    line-height: 1.6;
+    overflow-x: hidden; /* Para evitar scroll horizontal indesejado */
+}
+
+/* Efeito de glitch leve no body */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.05),
+        rgba(0, 255, 0, 0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none; /* Não interfere com cliques */
+    z-index: -1;
+    opacity: 0.1;
+}
+
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--secondary-color); /* Ciano neon para título principal */
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+    letter-spacing: 2px;
+}
+
+header p {
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+/* --- Caixas de Conteúdo (Generator Box e Logs) --- */
+
+.generator-box, .logs-section #logsDashboard {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    width: 100%;
+    max-width: 700px; /* Um pouco mais largo */
+    margin-bottom: 30px;
+    border: 1px solid var(--primary-color); /* Borda neon */
+}
+
+.logs-section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.logs-section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* --- Formulário e Input --- */
+
+input[type="url"] {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: var(--terminal-font);
+    background-color: #0d1117; /* Fundo do input mais escuro */
+    color: var(--primary-color);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="url"]:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 255, 0.25), 0 0 10px var(--secondary-color);
+    outline: none;
+}
+
+/* Placeholder text */
+input[type="url"]::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+
+/* --- Botões --- */
+
+button {
+    background-color: var(--primary-color);
+    color: var(--background-color); /* Texto escuro no botão */
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: var(--terminal-font);
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    margin-right: 10px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+button:hover {
+    background-color: #00cc00; /* Verde um pouco mais escuro */
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+#copyBtn {
+    background-color: var(--secondary-color); /* Ciano para copiar */
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+#copyBtn:hover {
+    background-color: #00cccc;
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+#clearLogsBtn {
+    background-color: var(--danger-color); /* Vermelho forte para limpar */
+    box-shadow: 0 0 5px var(--danger-color);
+}
+
+#clearLogsBtn:hover {
+    background-color: #cc0000; 
+    box-shadow: 0 0 15px var(--danger-color);
+}
+
+#exportJsonBtn {
+    background-color: #8a2be2; /* Roxo para exportar */
+    box-shadow: 0 0 5px #8a2be2;
+}
+
+#exportJsonBtn:hover {
+    background-color: #6a1bb3;
+    box-shadow: 0 0 15px #8a2be2;
+}
+
+/* --- Container de Resultado --- */
+
+#resultContainer {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid var(--secondary-color); /* Borda ciano */
+    border-left: 5px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    background-color: #10151a; /* Fundo escuro */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+#resultContainer.hidden {
+    display: none;
+}
+
+#shortLink {
+    display: block;
+    word-break: break-all;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 10px 0 15px 0;
+    text-decoration: none;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+#shortLink:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+}
+
+/* --- Estilos dos Logs (Onde aparece quem acessou) --- */
+
+.log-entry {
+    border: 1px solid var(--primary-color);
+    background-color: #1a222c; /* Fundo do log um pouco mais claro */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+}
+
+.log-entry h3 {
+    color: var(--secondary-color);
+    border-bottom: 1px dashed var(--primary-color);
+    padding-bottom: 8px;
+    margin-top: 0;
+    font-size: 1.4em;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.log-entry strong {
+    color: var(--primary-color);
+}
+
+.visit-log {
+    margin-top: 15px;
+    padding: 10px;
+    border-left: 4px solid var(--secondary-color);
+    background-color: #1f2a38; /* Fundo do detalhe da visita */
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+.visit-log p {
+    margin: 4px 0;
+    font-size: 0.95em;
+    color: #e0e0e0; /* Texto mais claro para melhor contraste */
+}
+
+.visit-log h4 {
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+}
+
+.gps-error {
+    color: var(--danger-color);
+    font-style: italic;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Estilo para o link do Mapa nos Logs */
+.map-link {
+    display: inline-block;
+    background-color: rgba(0, 255, 255, 0.1); /* Fundo ciano translúcido */
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    text-shadow: none; /* Remove a sombra do texto para este elemento */
+}
+
+.map-link:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: auto; 
+    padding: 20px 0;
+    font-size: 0.85em;
+    color: rgba(0, 255, 0, 0.7); /* Verde mais suave */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+#noLinksMessage {
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreador de Links Simples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🔗 Rastreador de Links Simples</h1>
+        <p>Gere links rastreáveis e visualize detalhes de acesso no dashboard abaixo.</p>
+    </header>
+
+    <section class="generator-box">
+        <h2>Gerar Novo Link</h2>
+        <input type="url" id="longUrl" placeholder="Cole a URL que você quer rastrear aqui (ex: https://google.com)" required>
+        <button id="generateBtn">Gerar Link Rastreado</button>
+        
+        <div id="resultContainer" class="hidden">
+            <h4>Link Curto Gerado:</h4>
+            <a href="#" id="shortLink" target="_blank"></a>
+            <button id="copyBtn">Copiar Link</button>
+        </div>
+    </section>
+
+    <section class="logs-section">
+        <h2>📊 Logs de Acesso (Quem Acessou)</h2>
+        
+        <div style="margin-bottom: 20px;">
+            <button id="exportJsonBtn">Exportar Logs (JSON)</button>
+            <button id="clearLogsBtn">Limpar Todos os Logs</button>
+        </div>
+        
+        <div id="logsDashboard">
+            <p id="noLinksMessage">Nenhum link gerado ainda.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Rastreador de Links Local - Dados armazenados apenas no seu navegador.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
